@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+<h2>Orders</h2>
+
+<br />
+<table class="table table-bordered table-striped table-hover table-condensed" style="table-layout: auto">
+    <tr>
+        <th>Orders:</th>
+    </tr>
+    @foreach (var item in ViewBag.Orders)
+    {
+        <tr>
+            <td>
+                  @item["OrderID"]
+            </td>
+            <td>
+                @item["ShipperName"]
+            </td>
+            <td>
+                @item["ShipperCity"]
+            </td>
+            <td>
+                @item["TS"]
+            </td>
+        </tr>
+    }
+</table>
