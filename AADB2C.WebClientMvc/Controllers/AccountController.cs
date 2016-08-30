@@ -47,8 +47,8 @@ namespace AADB2C.WebClientMvc.Controllers
             if (Request.IsAuthenticated)
             {
                 IEnumerable<AuthenticationDescription> authTypes = HttpContext.GetOwinContext().Authentication.GetAuthenticationTypes();
+
                 HttpContext.GetOwinContext().Authentication.SignOut(authTypes.Select(t => t.AuthenticationType).ToArray());
-                Request.GetOwinContext().Authentication.GetAuthenticationTypes();
             }
         }
     }

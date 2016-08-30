@@ -40,6 +40,7 @@ namespace AADB2C.WebClientMvc
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
 
             // Configure OpenID Connect middleware for each policy
+
             app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(SignUpPolicyId));
             app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(ProfilePolicyId));
             app.UseOpenIdConnectAuthentication(CreateOptionsFromPolicy(SignInPolicyId));
@@ -76,7 +77,7 @@ namespace AADB2C.WebClientMvc
                 PostLogoutRedirectUri = redirectUri,
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
-                    AuthenticationFailed = AuthenticationFailed,
+                    AuthenticationFailed = AuthenticationFailed
                 },
                 Scope = "openid",
                 ResponseType = "id_token",
