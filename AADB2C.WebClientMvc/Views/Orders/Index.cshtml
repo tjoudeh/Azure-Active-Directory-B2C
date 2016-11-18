@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AADB2C.WebClientMvc.Controllers.OrderModel>
+﻿@model IEnumerable<AADB2C.WebClientMvc.Models.OrderModel>
 @{
     ViewBag.Title = "Orders";
 }
@@ -15,6 +15,7 @@
             <td>Shipper</td>
             <td>Shipper City</td>
             <td>Date</td>
+            <td></td>
         </tr>
     </thead>
     @foreach (var item in Model)
@@ -31,6 +32,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TS)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {  id=item.OrderID })
             </td>
         </tr>
     }

@@ -1,0 +1,50 @@
+﻿@model AADB2C.WebClientMvc.Models.OrderModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipperName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipperName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShipperCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShipperCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -56,6 +56,28 @@ namespace ADDB2C.Api.Controllers
             return Ok(orderEntitis);
         }
 
+        [Route("{orderId}")]
+        public IHttpActionResult Get(string orderId)
+        {
+
+            //This will be read from the access token claims.
+            var userId = User.Identity.Name;
+
+            TableQuery<OrderEntity> query = new TableQuery<OrderEntity>()
+                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, userId));
+
+            var orderEntity = cloudTable.ExecuteQuery(query).Where(f=> f.RowKey == orderId).Select(
+                o => new OrderModel()
+                {
+                    OrderID = o.RowKey,
+                    ShipperName = o.ShipperName,
+                    ShipperCity = o.ShipperCity,
+                    TS = o.Timestamp
+                }).SingleOrDefault();
+
+            return Ok(orderEntity);
+        }
+
         [Route("")]
         public IHttpActionResult Post (OrderModel order)
         {
