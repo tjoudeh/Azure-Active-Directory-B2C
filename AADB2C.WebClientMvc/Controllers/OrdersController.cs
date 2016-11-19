@@ -122,7 +122,11 @@ namespace AADB2C.WebClientMvc.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    //return RedirectToAction("Index");
+
+                    var savedOrder = await response.Content.ReadAsAsync<OrderModel>();
+
+                    return RedirectToAction("Details", new { id = savedOrder.OrderID });
                 }
                 else
                 {
